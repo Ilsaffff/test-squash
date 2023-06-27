@@ -14,4 +14,3 @@ def get_model():
 def get_square(model, x_test):
     y_pred = model.predict(x_test)
     return y_pred
-

@@ -1,4 +1,17 @@
+formatting:
+  stage: build
+  script:
+    - black .
+    - mypy --ignore-missing-imports --exclude venv .
+    - isort .
+
+cyclomatic-complexity:
+  stage: build
+  script:
+    - radon cc --ignore venv,tests .
+
 test-job:
   stage: test
   script:
     - pytest
+
