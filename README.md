@@ -1,8 +1,4 @@
-<<<<<<< README.md
 # cicd_python_cnn
-=======
-# cicd_python_cnn
->>>>>>> README.md
 
 
 
