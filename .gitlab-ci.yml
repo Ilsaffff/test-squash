@@ -26,3 +26,10 @@ testing:
   script:
     - pip install -r requirements.txt
     - pytest
+
+build-and-publish:
+  stage: deplot
+  script:
+    - docker build -t ilsaffff/ci-cd:latest .
+    - docker login -u ilsaffff -p 877*k7Q23NsX
+    - docker push ilsaffff/ci-cd:latest
