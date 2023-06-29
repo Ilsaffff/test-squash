@@ -1,3 +1,6 @@
+before_script:
+  - pip install -r requirements.txt
+
 formatting:
   stage: build
   script:
