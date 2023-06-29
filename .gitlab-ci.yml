@@ -21,7 +21,8 @@ formatting:
 #  script:
 #    - radon cc --ignore venv,tests .
 
-test-job:
+testing:
   stage: test
   script:
+    - pip install -r requirements.txt
     - pytest
