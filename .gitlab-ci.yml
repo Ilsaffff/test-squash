@@ -1,11 +1,7 @@
 image: python:3.10
 
-#before_script:
-#  - pip install -r requirements.txt
-#
-#installing-packets:
-#  stage: build
-#  script:
+services:
+  - docker:dind
 
 formatting:
   stage: build
@@ -16,11 +12,6 @@ formatting:
     - isort .
     - radon cc --ignore venv,tests .
 
-#cyclomatic-complexity:
-#  stage: build
-#  script:
-#    - radon cc --ignore venv,tests .
-
 testing:
   stage: test
   script:
@@ -30,11 +21,6 @@ testing:
 build-and-publish:
   stage: deploy
   script:
-    - apt-get remove docker docker-engine docker.io containerd runc
-    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    - echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    - apt-get update
-    - apt-get install -y docker-ce docker-ce-cli containerd.io
     - docker build -t ilsaffff/ci-cd:latest .
     - docker login -u ilsaffff -p 877*k7Q23NsX
     - docker push ilsaffff/ci-cd:latest
