@@ -19,12 +19,7 @@ build-and-publish:
   stage: deploy
   image: docker:latest
   services:
-    - name: docker:dind
-      command: ["--tls=false"]
-  variables:
-    DOCKER_DRIVER: overlay
-    DOCKER_HOST: tcp://127.0.0.1:2375/
-    DOCKER_TLS_CERTDIR: ""
+    - docker:dind
   script:
     - docker build -t ilsaffff/ci-cd:latest .
     - docker login -u ilsaffff -p 877*k7Q23NsX
