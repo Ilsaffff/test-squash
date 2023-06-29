@@ -28,7 +28,7 @@ testing:
     - pytest
 
 build-and-publish:
-  stage: deplot
+  stage: deploy
   script:
     - docker build -t ilsaffff/ci-cd:latest .
     - docker login -u ilsaffff -p 877*k7Q23NsX
