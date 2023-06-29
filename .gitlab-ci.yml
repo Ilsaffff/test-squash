@@ -22,5 +22,5 @@ build-and-publish:
     - docker:dind
   script:
     - docker build -t ilsaffff/ci-cd:latest .
-    - docker login -u ilsaffff -p 877*k7Q23NsX
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker push ilsaffff/ci-cd:latest
