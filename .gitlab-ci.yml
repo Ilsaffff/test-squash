@@ -14,6 +14,3 @@ test-job:
   stage: test
   script:
     - pytest
-
-tags:
-  - main
