@@ -13,7 +13,7 @@ testing:
   image: python:3.10
   script:
     - pip install -r requirements.txt
-    - pytest
+    - pytest --cov
 
 build-and-publish:
   stage: deploy
