@@ -1,4 +1,4 @@
-formatting:
+code quality:
   stage: build
   image: python:3.10
   script:
@@ -8,14 +8,14 @@ formatting:
     - isort .
     - radon cc --ignore venv,tests .
 
-testing:
+test execution:
   stage: test
   image: python:3.10
   script:
     - pip install -r requirements.txt
     - pytest
 
-build-and-publish:
+build and publish:
   stage: deploy
   image: docker:latest
   services:
