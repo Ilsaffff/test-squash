@@ -32,7 +32,7 @@ build and publish to docker:
     - docker push ilsaffff/ci-cd:latest
 
 push to github:
-  stage: push_to_github
+  stage: build
   image: alpine/git
   script:
     - apk add --no-cache git
