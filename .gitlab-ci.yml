@@ -4,11 +4,11 @@ push to github:
     name: alpine/git:latest
     entrypoint: [""]
   script:
+    - apk add --no-cache git
     - git config user.email $GIT_EMAIL
     - git config user.name $GIT_NAME
-    - git remote add gitlab_origin https://oauth2:$GITHUB_TOKEN@$GITHUB_REPO
-    - git branch -M main
-    - git push -u origin main
+    - git remote add github https://oauth2:$GITHUB_TOKEN@$GITHUB_REPO
+    - git push github $CI_COMMIT_REF_NAME
 
 
 code quality:
