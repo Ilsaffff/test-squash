@@ -7,7 +7,6 @@ push to github:
     - apk add --no-cache git
     - git config user.email $GIT_EMAIL
     - git config user.name $GIT_NAME
-    - git remote add github https://oauth2:$GITHUB_TOKEN@$GITHUB_REPO
     - git push github $CI_COMMIT_REF_NAME
 
 
