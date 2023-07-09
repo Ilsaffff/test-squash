@@ -12,9 +12,6 @@ code quality:
     - poetry run mypy --ignore-missing-imports --exclude venv .
     - poetry run isort .
     - poetry run radon cc --ignore venv,tests .
-    - git add .
-    - git diff --quiet --exit-code --cached || git commit -m "Auto-format code [skip ci]"
-    - git push -u origin main || git push origin $CI_COMMIT_REF_NAME
 
 test execution:
   stage: test
