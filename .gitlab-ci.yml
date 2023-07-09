@@ -7,8 +7,8 @@ code quality:
     - poetry install --no-root
   script:
     - poetry run black --check
+    - poetry run isort --check-only .
     - poetry run mypy --ignore-missing-imports --exclude venv .
-    - poetry run isort .
     - poetry run radon cc --ignore venv,tests .
 
 test execution:
