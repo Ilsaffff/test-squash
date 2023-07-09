@@ -1,3 +1,15 @@
+push to github:
+  stage: build
+  image: alpine/git:latest
+  script:
+    - git config user.email $GIT_EMAIL
+    - git config user.name $GIT_NAME
+    - git remote add gitlab_origin https://oauth2:$GITHUB_TOKEN@$GITHUB_REPO
+    - git add .
+    - git commit -m "init"
+    - git push gitlab_origin HEAD:main -o ci.skip
+
+
 code quality:
   stage: build
   image: python:3.10
@@ -31,14 +43,4 @@ build and publish to docker:
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker push ilsaffff/ci-cd:latest
 
-push to github:
-  stage: build
-  image: alpine/git
-  script:
-    - git config user.email $GIT_EMAIL
-    - git config user.name $GIT_NAME
-    - git remote add gitlab_origin https://oauth2:$GITHUB_TOKEN@$GITHUB_REPO
-    - git add .
-    - git commit -m "init"
-    - git push gitlab_origin HEAD:main -o ci.skip
 
