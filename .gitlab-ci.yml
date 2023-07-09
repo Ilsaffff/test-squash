@@ -13,7 +13,7 @@ push to github:
     - git fetch origin '+refs/pull/*:refs/remotes/origin/pull/*'
     - git checkout $GITHUB_NAME
     - git merge --squash origin/$CI_COMMIT_REF_NAME
-    - git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
+    - git diff --cached --exit-code || git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
     - git push origin HEAD:$CI_COMMIT_REF_NAME
 
 
