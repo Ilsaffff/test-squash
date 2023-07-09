@@ -14,10 +14,11 @@ push to github:
     - git checkout $GITHUB_NAME
     - git merge --squash origin/$CI_COMMIT_REF_NAME
     - git diff --cached --exit-code || git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
+    - export GIT_ASKPASS=$(pwd)/askpass.sh
+    - echo $GITHUB_TOKEN | tr -d '\r' > git_token
+    - chmod +x askpass.sh
+    - echo "echo \"\$1\"" > askpass.sh
     - git push origin HEAD:$CI_COMMIT_REF_NAME
-      <<EOF
-      $GITHUB_TOKEN
-      EOF
 
 code quality:
   stage: build
