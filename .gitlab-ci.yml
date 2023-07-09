@@ -6,7 +6,7 @@ code quality:
     - poetry config virtualenvs.create false
     - poetry install --no-root
   script:
-    - poetry run black --check
+    - poetry run black --check .
     - poetry run isort --check-only .
     - poetry run mypy --ignore-missing-imports --exclude venv .
     - poetry run radon cc --ignore venv,tests .
