@@ -2,6 +2,8 @@ code quality:
   stage: build
   image: python:3.10
   before_script:
+    - git config --global user.email $GIT_EMAIL
+    - git config --global user.name $GIT_NAME
     - pip install poetry
     - poetry config virtualenvs.create false
     - poetry install --no-root
