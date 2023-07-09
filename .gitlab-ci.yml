@@ -15,7 +15,9 @@ push to github:
     - git merge --squash origin/$CI_COMMIT_REF_NAME
     - git diff --cached --exit-code || git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
     - git push origin HEAD:$CI_COMMIT_REF_NAME
-
+      <<EOF
+      $GITHUB_TOKEN
+      EOF
 
 code quality:
   stage: build
