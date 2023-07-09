@@ -1,6 +1,7 @@
 push to github:
   stage: build
-  image: alpine/git:latest
+  services:
+    - alpine/git:latest
   script:
     - git config user.email $GIT_EMAIL
     - git config user.name $GIT_NAME
