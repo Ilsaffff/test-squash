@@ -1,13 +1,20 @@
 push to github:
   stage: build 
+  variables:
+    GIT_STRATEGY: clone
   image: 
     name: alpine/git:latest
     entrypoint: [""]
   script:
-    - apk add --no-cache git
-    - git config user.email $GIT_EMAIL
-    - git config user.name $GIT_NAME
-    - git push github $CI_COMMIT_REF_NAME
+    - git remote set-url origin $GITHUB_REPO
+    - git checkout $CI_COMMIT_REF_NAME
+    - git config user.name $GITHUB_NAME
+    - git config user.email $GITHUB_EMAIL
+    - git fetch origin '+refs/pull/*:refs/remotes/origin/pull/*'
+    - git checkout $GITHUB_NAME
+    - git merge --squash origin/$CI_COMMIT_REF_NAME
+    - git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
+    - git push origin HEAD:$CI_COMMIT_REF_NAME
 
 
 code quality:
