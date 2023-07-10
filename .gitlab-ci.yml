@@ -6,19 +6,10 @@ push to github:
     name: alpine/git:latest
     entrypoint: [""]
   script:
-    - git remote set-url origin $GITHUB_REPO
+    - git clone $CI_REPOSITORY_URL
+    - cd  cicd_python_cnn
     - git checkout $CI_COMMIT_REF_NAME
-    - git config user.name "$GIT_NAME"
-    - git config user.email "$GIT_EMAIL"
-    - git fetch origin '+refs/pull/*:refs/remotes/origin/pull/*'
-    - git checkout $GITHUB_NAME
-    - git merge --squash origin/$CI_COMMIT_REF_NAME
-    - git diff --cached --exit-code || git commit -m "Squashed changes from $CI_COMMIT_REF_NAME"
-    - export GIT_ASKPASS=$(pwd)/askpass.sh
-    - echo $GITHUB_TOKEN | tr -d '\r' > git_token
-    - chmod +x askpass.sh
-    - echo "echo \"\$1\"" > askpass.sh
-    - git push origin HEAD:$CI_COMMIT_REF_NAME
+    - git push github $CI_COMMIT_REF_NAME
 
 code quality:
   stage: build
