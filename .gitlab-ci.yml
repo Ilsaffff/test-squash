@@ -6,7 +6,7 @@ push to github:
     name: alpine/git:latest
     entrypoint: [""]
   script:
-    - git clone $CI_REPOSITORY_URL
+    - git clone --depth 20 $CI_REPOSITORY_URL
     - cd  cicd_python_cnn
     - git checkout $CI_COMMIT_REF_NAME
     - git push github $CI_COMMIT_REF_NAME
