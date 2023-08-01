@@ -4,12 +4,14 @@ variables:
 
 download_repo:
   stage: build
+  image: alpine/git
   script:
     - git clone $GITLAB_REPO_URL
     - cd ci-cd
 
 upload_repo:
   stage: build
+  image: alpine/git
   script:
     - git remote set-url origin $GITHUB_REPO_URL
     - git push origin --all
