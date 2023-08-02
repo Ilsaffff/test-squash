@@ -4,14 +4,18 @@ push to github:
   services:
     - docker:dind
   variables:
-    DOCKER_DRIVER: overlay2
-  script:
+    DOCKER_DRIVER: overlay2  # Если ваш CI/CD работает на GitLab, это может потребоваться для использования Docker in Docker.
+  before_script:
+    # Создание директории .ssh внутри контейнера и копирование всех файлов из ssh_keys
     - mkdir -p ~/.ssh
     - cp ssh_keys/* ~/.ssh/
     - chmod 600 ~/.ssh/id_rsa
-    - docker run --rm -v "$PWD":/git -w /git alpine/git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
+  script:
+    # Передача файла known_hosts в контейнер
+    - docker run --rm -v "$PWD":/git -v ~/.ssh/known_hosts:/root/.ssh/known_hosts -w /git alpine/git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
     - cd cicd_python_cnn
-    - docker run --rm -v "$PWD":/git -w /git alpine/git push --mirror git@github.com:Ilsaffff/test-release-.git
+    # Передача файла known_hosts в контейнер
+    - docker run --rm -v "$PWD":/git -v ~/.ssh/known_hosts:/root/.ssh/known_hosts -w /git alpine/git push --mirror git@github.com:Ilsaffff/test-release-.git
 
 code quality:
   stage: build
