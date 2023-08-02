@@ -3,9 +3,14 @@ push to github:
   image: docker:latest
   services:
     - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
   script:
+    - mkdir -p ~/.ssh
+    - cp ssh_keys/* ~/.ssh/
+    - chmod 600 ~/.ssh/id_rsa
     - docker run --rm -v "$PWD":/git -w /git alpine/git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
-    - cd ci-cd
+    - cd cicd_python_cnn
     - docker run --rm -v "$PWD":/git -w /git alpine/git push --mirror git@github.com:Ilsaffff/test-release-.git
 
 code quality:
