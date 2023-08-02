@@ -17,9 +17,9 @@ push to github:
     # Фетчим все удаленные ветки для обновления ссылок
     - git fetch --all
     # Извлекаем название последнего коммита из переменной окружения
-    - last_commit_message="$CI_COMMIT_TITLE"
+    - last_commit_message=$(git log -1 --pretty=%B)
     # Создаем временную ветку для выполнения squash
-    - git checkout -b squash_branch
+    - git --work-tree=tmp_repo checkout -b squash_branch
     # Выполняем squash всех коммитов в один
     - git reset $(git rev-list --max-parents=0 HEAD)
     - git add -A
