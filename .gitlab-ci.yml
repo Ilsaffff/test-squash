@@ -6,7 +6,7 @@ push to github:
   script:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
     - cd cicd_python_cnn.git
-    - git remote set-url --push origin https://Ilsaffff:$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@github.com:Ilsaffff/test-release-.git
+    - git remote set-url --push origin https://Ilsaffff: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@github.com:Ilsaffff/test-release-.git
     - git push --mirror
 
 
