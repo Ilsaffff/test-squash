@@ -1,10 +1,12 @@
 push to github:
   stage: build
-  image: alpine/git
+  image: docker:latest
+  services:
+    - docker:dind
   script:
-    - git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
+    - docker run --rm -v "$PWD":/git -w /git alpine/git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
     - cd ci-cd
-    - git push --mirror git@github.com:Ilsaffff/test-release-.git
+    - docker run --rm -v "$PWD":/git -w /git alpine/git push --mirror git@github.com:Ilsaffff/test-release-.git
 
 code quality:
   stage: build
