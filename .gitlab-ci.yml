@@ -11,15 +11,15 @@ push to github:
     - cd cicd_python_cnn.git
     - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
     - git fetch --all
-    # Find the commit hash you want to squash and push
-    - read -p "Enter the commit hash to squash and push to master:" commit_hash
-    # Create a new branch with the commit you want to squash
-    - git checkout -b squash_branch $commit_hash
-    # Amend the commit to allow editing the commit message
-    - git commit --amend
-    # Squash all commits into a single commit
-    - git rebase -i HEAD~$(git rev-list --count $commit_hash..HEAD)
-    # Push the squashed commit to GitHub master
+    # Извлекаем название последнего коммита
+    - last_commit_message=$(git log -1 --pretty=%B)
+    # Создаем временную ветку для выполнения squash
+    - git checkout -b squash_branch
+    # Выполняем squash всех коммитов в один
+    - git reset $(git rev-list --max-parents=0 HEAD)
+    - git add -A
+    - git commit -m "$last_commit_message"
+    # Пушим изменения в GitHub ветку master
     - git push --force origin HEAD:refs/heads/master
 
 
