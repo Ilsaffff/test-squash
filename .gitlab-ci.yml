@@ -1,13 +1,13 @@
 push to github:
   stage: build
-  image: docker:latest
-  variables:
-    DOCKER_DRIVER: overlay2
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
   script:
-    - docker run --rm -v "$PWD":/git -w /git alpine/git clone --mirror git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
+    - git clone --mirror git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
     - cd cicd_python_cnn.git
-    - docker run --rm -v "$PWD":/git -w /git alpine/git remote set-url --push origin https://Ilsaffff:$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@github.com:Ilsaffff/test-release-.git
-    - docker run --rm -v "$PWD":/git -w /git alpine/git push --mirror
+    - git remote set-url --push origin https://Ilsaffff:$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@github.com:Ilsaffff/test-release-.git
+    - git push --mirror
 
 
 
