@@ -6,30 +6,28 @@ push to github:
   only:
     - main
     - release
+  variables:
+    GIT_WORK_TREE: /tmp/cicd_work_tree
   script:
-    # Создаем временную директорию для клонирования репозитория
-    - mkdir tmp_repo
-    - cd tmp_repo
-    - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
-    - cd cicd_python_cnn.git
+    # Создаем временную директорию для рабочего дерева
+    - mkdir $GIT_WORK_TREE
+    # Клонируем репозиторий с указанием рабочего дерева
+    - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git $GIT_WORK_TREE/cicd_python_cnn.git
+    # Устанавливаем рабочий каталог для выполнения команд
+    - cd $GIT_WORK_TREE/cicd_python_cnn.git
     # Устанавливаем URL для push в GitHub
     - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
-    # Фетчим все удаленные ветки для обновления ссылок
-    - git fetch --all
-    # Извлекаем название последнего коммита из переменной окружения
     - last_commit_message=$(git log -1 --pretty=%B)
     # Создаем временную ветку для выполнения squash
-    - git --work-tree=tmp_repo checkout -b squash_branch
+    - git checkout -b squash_branch $(git rev-list --max-parents=0 HEAD)
     # Выполняем squash всех коммитов в один
-    - git reset $(git rev-list --max-parents=0 HEAD)
-    - git add -A
+    - git reset $(git rev-list --max-parents=0 HEAD) --soft
     - git commit -m "$last_commit_message"
     # Пушим изменения в GitHub в ветку master
-    - git push --force origin HEAD:refs/heads/master
+    - git push --force origin squash_branch:refs/heads/master
   # Очищаем временную директорию после выполнения задачи
   after_script:
-    - cd ../..
-    - rm -rf tmp_repo
+    - rm -rf $GIT_WORK_TREE
 
 
 
