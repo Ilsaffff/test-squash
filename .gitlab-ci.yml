@@ -1,13 +1,10 @@
-variables:
-  GITLAB_REPO_URL: "https://appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git"
-  GITHUB_REPO_URL: "https://github.com/Ilsaffff/test-ci-cd.git"
-
-download_repo:
+push to github:
   stage: build
   image: alpine/git
   script:
-    - git clone $GITLAB_REPO_URL
+    - git clone git@appliedmath.gitlab.yandexcloud.net:computemath/cicd_python_cnn.git
     - cd ci-cd
+    - git push --mirror git@github.com:Ilsaffff/test-release-.git
 
 upload_repo:
   stage: build
