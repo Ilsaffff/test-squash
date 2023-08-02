@@ -6,13 +6,6 @@ push to github:
     - cd ci-cd
     - git push --mirror git@github.com:Ilsaffff/test-release-.git
 
-upload_repo:
-  stage: build
-  image: alpine/git
-  script:
-    - git remote set-url origin $GITHUB_REPO_URL
-    - git push origin --all
-
 code quality:
   stage: build
   image: python:3.10
