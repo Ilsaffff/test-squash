@@ -16,7 +16,7 @@ push to github:
   script:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
     - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-squash.git
-     - git fetch origin
+    - git fetch origin
     - if git show-ref --quiet refs/heads/squash_branch; then git checkout squash_branch; else git checkout -b squash_branch origin/main; fi
     - git merge --squash origin/main # Объединяем все коммиты в один с помощью git merge --squash
     - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
