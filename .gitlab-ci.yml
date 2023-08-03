@@ -20,7 +20,7 @@ push to github:
     - if git show-ref --quiet refs/heads/squash_branch; then git checkout squash_branch; else git checkout -b squash_branch origin/main; fi
     - git merge --squash -Xours origin/main # Объединяем все коммиты в один с помощью git merge --squash
     - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
-    - git push origin squash_branch # Загружаем изменения в GitHub
+    - git push --set-upstream origin squash_branch # Загружаем изменения в GitHub
   
 
 
