@@ -8,12 +8,12 @@ push to github:
     - release
   script:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
-    - git remote add github https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
-    - git fetch github
+    - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
+    - git fetch origin
     - git checkout -b squash_branch github/master
     - git reset --soft HEAD~$CI_COMMIT_BEFORE_SHA
     - git commit -m "Squashed and transferred all changes"
-    - git push -u github squash_branch 
+    - git push -u origin squash_branch 
   
 
 
