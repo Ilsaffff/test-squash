@@ -1,5 +1,12 @@
+stages:
+  - squashing
+  - build
+  - test
+  - deploy
+
+
 push to github:
-  stage: build
+  stage: squashing
   image:
     name: alpine/git:latest
     entrypoint: [""]
@@ -10,7 +17,7 @@ push to github:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
     - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-squash.git
     - git fetch origin
-    - git checkout main # Переключаемся на ветку main (или любую другую ветку, которую вы хотите использовать)
+    - git checkout origin/main # Переключаемся на ветку main (или любую другую ветку, которую вы хотите использовать)
     - git merge --squash origin/main 
     - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
     - git push -u origin main # Загружаем изменения в GitHub
