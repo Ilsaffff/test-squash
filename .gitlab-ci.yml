@@ -8,10 +8,11 @@ push to github:
     - release
   script:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
-    - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
+    - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-squash.git
     - git fetch origin
-    - git checkout squash_branch # Создаем новую ветку на основе origin/master
-    - git reset --soft HEAD~1 # Squash всех коммитов, начиная с предыдущего коммита (не включительно)
+    - git checkout origin/main
+    - git checkout -b squash_branch # Создаем новую ветку на основе origin/master
+    - git reset --soft $(git rev-list --max-parents=1 HEAD) # Squash всех коммитов, начиная с предыдущего коммита (не включительно)
     - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
     - git push -u origin squash_branch # Загружаем изменения в GitHub
   
