@@ -6,32 +6,16 @@ push to github:
   only:
     - main
     - release
-  variables:
-    GIT_WORK_TREE: /tmp/cicd_work_tree
-    GIT_DIR: /tmp/cicd_git_dir
   script:
-    # Создаем временную директорию для рабочего дерева
-    - mkdir $GIT_WORK_TREE
-    # Клонируем репозиторий с указанием рабочего дерева и директории .git
-    - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git $GIT_WORK_TREE
-    # Устанавливаем рабочий каталог для выполнения команд
-    - cd $GIT_WORK_TREE
-    # Устанавливаем директорию .git для выполнения команд
-    - export GIT_DIR=$GIT_WORK_TREE/.git
-    # Устанавливаем URL для push в GitHub
-    - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
-    # Извлекаем название последнего коммита из переменной окружения
-    - last_commit_message=$(git log -1 --pretty=%B)
-    # Создаем временную ветку для выполнения squash
-    - git checkout -b squash_branch $(git rev-list --max-parents=0 HEAD)
-    # Выполняем squash всех коммитов в один
-    - git reset $(git rev-list --max-parents=0 HEAD) --soft
-    - git commit -m "$last_commit_message"
-    # Пушим изменения в GitHub в ветку master
-    - git push --force origin squash_branch:refs/heads/master
-  # Очищаем временные директории после выполнения задачи
-  after_script:
-    - rm -rf $GIT_WORK_TREE
+    - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
+    - cd cicd_python_cnn.git
+    - git remote add github https://Ilsaffff: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@github.com/Ilsaffff/test-release-.git
+    - git fetch github
+    - git checkout -b squash_branch github/master
+    - git reset --soft HEAD~$CI_COMMIT_BEFORE_SHA
+    - git commit -m "Squashed and transferred all changes"
+    - git push -u github squash_branch 
+  
 
 
 
