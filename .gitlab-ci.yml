@@ -16,7 +16,7 @@ push to github:
   script:
     - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
     - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-squash.git
-    - git rebase --root -i
+    - git rebase -i HEAD~100
     - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
     - git push -f origin main # Загружаем изменения в GitHub
   
