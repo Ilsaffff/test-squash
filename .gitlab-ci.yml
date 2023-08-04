@@ -5,11 +5,6 @@ stages:
   - deploy
   - release
 
-.cache:
-  paths:
-    - .cache/
-    - .venv/
-
 build:
   stage: build
   image: python:3.10
@@ -19,7 +14,9 @@ build:
   script:
     - poetry install --no-root
   cache:
-    <<: *cache
+    paths:
+      - .cache/
+      - .venv/
     policy: push
 
 validate:
@@ -31,7 +28,9 @@ validate:
     - poetry run mypy --ignore-missing-imports --exclude venv .
     - poetry run radon cc --ignore venv,tests .
   cache:
-    <<: *cache
+    paths:
+      - .cache/
+      - .venv/
     policy: pull
 
 test:
@@ -40,7 +39,9 @@ test:
   script:
     - poetry run pytest --cov --cov-fail-under=$PERCENT_COVERAGE
   cache:
-    <<: *cache
+    paths:
+      - .cache/
+      - .venv/
     policy: pull
 
 
