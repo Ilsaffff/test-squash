@@ -5,6 +5,11 @@ stages:
   - deploy
   - release
 
+cache:
+  paths:
+    - .venv/
+    - ~/.cache/pypoetry
+
 build:
   stage: build
   image: python:3.10
@@ -14,11 +19,7 @@ build:
     - poetry config virtualenvs.in-project true
   script:
     - poetry install --no-root
-  cache:
-    paths:
-      - .cache/
-      - .venv/
-    policy: push
+
 
 validate:
   stage: validate
@@ -28,11 +29,6 @@ validate:
     - poetry run isort --check-only .
     - poetry run mypy --ignore-missing-imports --exclude venv .
     - poetry run radon cc --ignore venv,tests .
-  cache:
-    paths:
-      - .cache/
-      - .venv/
-    policy: pull
 
 test:
   stage: test
