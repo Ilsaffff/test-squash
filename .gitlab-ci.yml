@@ -17,7 +17,7 @@ push to github:
   script:
     - git clone --mirror $GITLAB_OAUTH_URL
     - git remote set-url --push origin $GITHUB_OAUTH_URL
-    - git push -f origin main
+    - git push --mirror
 
 
 cache:
