@@ -1,52 +1,50 @@
 stages:
-  - squashing
   - build
+  - validate
   - test
   - deploy
+  - release
 
+.cache:
+  paths:
+    - .cache/
+    - .venv/
 
-push to github:
-  stage: squashing
-  image:
-    name: alpine/git:latest
-    entrypoint: [""]
-  only:
-    - main
-    - release
-  script:
-    - git clone --mirror https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git
-    - git remote set-url --push origin https://Ilsaffff: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@github.com/Ilsaffff/test-squash.git
-    - git rebase -i HEAD~100
-    - git commit -m "Squashed and transferred all changes" # Коммит со всеми изменениями объединенными в один
-    - git push -f origin main # Загружаем изменения в GitHub
-  
-
-
-
-code quality:
+build:
   stage: build
   image: python:3.10
   before_script:
     - pip install poetry
     - poetry config virtualenvs.create false
+  script:
     - poetry install --no-root
+  cache:
+    <<: *cache
+    policy: push
+
+validate:
+  stage: validate
+  image: python:3.10
   script:
     - poetry run black --check .
     - poetry run isort --check-only .
     - poetry run mypy --ignore-missing-imports --exclude venv .
     - poetry run radon cc --ignore venv,tests .
+  cache:
+    <<: *cache
+    policy: pull
 
-test execution:
+test:
   stage: test
   image: python:3.10
-  before_script:
-    - pip install poetry
-    - poetry config virtualenvs.create false
-    - poetry install --no-root
   script:
-    - poetry run pytest --cov
+    - poetry run pytest --cov --cov-fail-under=$PERCENT_COVERAGE
+  cache:
+    <<: *cache
+    policy: pull
 
-build and publish to docker:
+
+push to docker:
   stage: deploy
   image: docker:latest
   services:
@@ -57,3 +55,15 @@ build and publish to docker:
     - docker push ilsaffff/ci-cd:latest
 
 
+push to github:
+  stage: release
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
+  only:
+    - main
+    - release
+  script:
+    - git clone --mirror $GITLAB_OAUTH_URL
+    - git remote set-url --push origin $GITHUB_OAUTH_URL
+    - git push -f origin main
