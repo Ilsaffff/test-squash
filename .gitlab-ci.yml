@@ -1,9 +1,24 @@
 stages:
+  - release
   - build
   - validate
   - test
   - deploy
-  - release
+ 
+
+push to github:
+  stage: release
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
+  only:
+    - main
+    - release
+  script:
+    - git clone --mirror $GITLAB_OAUTH_URL
+    - git remote set-url --push origin $GITHUB_OAUTH_URL
+    - git push -f origin main
+
 
 cache:
   paths:
@@ -55,15 +70,4 @@ push to docker:
     - docker push ilsaffff/ci-cd:latest
 
 
-push to github:
-  stage: release
-  image:
-    name: alpine/git:latest
-    entrypoint: [""]
-  only:
-    - main
-    - release
-  script:
-    - git clone --mirror $GITLAB_OAUTH_URL
-    - git remote set-url --push origin $GITHUB_OAUTH_URL
-    - git push -f origin main
+
