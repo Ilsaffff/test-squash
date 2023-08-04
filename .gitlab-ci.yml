@@ -7,14 +7,16 @@ stages:
 
 cache:
   paths:
-    - .venv/
-    - ~/.cache/pypoetry
+    - /builds/computemath/cicd_python_cnn/.venv/
+    - /builds/computemath/cicd_python_cnn/.cache/pypoetry
 
 build:
   stage: build
   image: python:3.10
   before_script:
     - pip install poetry
+    - poetry config cache-dir /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    - poetry config virtualenvs.path /builds/computemath/cicd_python_cnn/.venv/
     - poetry config virtualenvs.create false
     - poetry config virtualenvs.in-project true
   script:
