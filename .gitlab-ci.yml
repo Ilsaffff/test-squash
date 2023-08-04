@@ -16,6 +16,7 @@ push to github:
     - release
   script:
     - git clone --mirror $GITLAB_OAUTH_URL
+    - cd cicd_python_cnn.git
     - git remote set-url --push origin $GITHUB_OAUTH_URL
     - git push --mirror
 
