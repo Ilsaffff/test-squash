@@ -4,6 +4,10 @@
       "remote": "https://Ilsaf:glpat-m1yiTFj7wsyy--GobGXW@appliedmath.gitlab.yandexcloud.net/computemath/cicd_python_cnn.git",
       "checkout": "main",
       "remotePath": "",
+      "lastHash": "eaad97e61394d839e15ab4a816f92ee289395349",
+      "conflictingFiles": [],
+      "resolvedFiles": [],
+      "faultyHash": "",
       "isDirty": false
     }
   },

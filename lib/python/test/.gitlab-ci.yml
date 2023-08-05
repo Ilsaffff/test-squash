@@ -1,0 +1,90 @@
+stages:
+  - build
+  - validate
+  - test
+  - deploy
+  - release
+
+cache:
+  paths:
+    - /builds/computemath/cicd_python_cnn/.cache/pip
+    - /builds/computemath/cicd_python_cnn/.venv/
+    - /builds/computemath/cicd_python_cnn/.cache/pypoetry
+
+build:
+  stage: build
+  image: python:3.10
+  before_script:
+    - export PIP_CACHE_DIR="/builds/computemath/cicd_python_cnn/.cache/pip"
+    - pip install poetry
+    - poetry config cache-dir /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    - poetry config virtualenvs.path /builds/computemath/cicd_python_cnn/.venv/
+  script:
+    - poetry install --no-root
+
+
+validate:
+  stage: validate
+  image: python:3.10
+  before_script:
+    - export PIP_CACHE_DIR="/builds/computemath/cicd_python_cnn/.cache/pip"
+    - pip install poetry
+    - poetry config cache-dir /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    - poetry config virtualenvs.path /builds/computemath/cicd_python_cnn/.venv/
+    - poetry install --no-root
+  script:
+    - poetry run black --check .
+    - poetry run isort --check-only .
+    - poetry run mypy --ignore-missing-imports --exclude venv .
+    - poetry run radon cc --ignore venv,tests .
+  cache:
+    paths:
+      - /builds/computemath/cicd_python_cnn/.cache/pip
+      - /builds/computemath/cicd_python_cnn/.venv/
+      - /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    policy: pull
+
+
+test:
+  stage: test
+  image: python:3.10
+  before_script:
+    - export PIP_CACHE_DIR="/builds/computemath/cicd_python_cnn/.cache/pip"
+    - pip install poetry
+    - poetry config cache-dir /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    - poetry config virtualenvs.path /builds/computemath/cicd_python_cnn/.venv/
+    - poetry install --no-root
+  script:
+    - poetry run pytest --cov --cov-fail-under=$PERCENT_COVERAGE
+  cache:
+    paths:
+      - /builds/computemath/cicd_python_cnn/.cache/pip
+      - /builds/computemath/cicd_python_cnn/.venv/
+      - /builds/computemath/cicd_python_cnn/.cache/pypoetry
+    policy: pull
+
+
+push to docker:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t ilsaffff/ci-cd:latest .
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker push ilsaffff/ci-cd:latest
+
+push to github:
+  stage: release
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
+  only:
+    - release
+  script:
+    - git clone --mirror $GITLAB_OAUTH_URL
+    - cd cicd_python_cnn.git
+    - git remote set-url --push origin $GITHUB_OAUTH_URL
+    - git push --mirror
+
+
