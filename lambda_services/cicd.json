@@ -1,8 +1,16 @@
 {
+  "name": "cicd",
   "endpoints": [],
-  "authMethod": "PUBLIC",
+  "authMethod": "API_KEYS",
   "authRealm": {
-    "queryKeys": []
+    "queryKeys": [
+      {
+        "key": "5fXTzF40MJpiYr3JJ3NGaLTwjm6AB3Wc",
+        "label": "cicid",
+        "createdOn": 1691675809407,
+        "createdBy": "admin"
+      }
+    ]
   },
   "oauth2Config": {
     "keysFormat": "JWKS_URI",
@@ -10,11 +18,11 @@
     "scopeClaimKey": "scope"
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1691675761919
+    "lastModifiedOn": 1691675809408
   },
   "creationTag": {
     "versionNumber": 0,
