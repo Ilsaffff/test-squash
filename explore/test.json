@@ -5,7 +5,10 @@
     "columnsSelection": {
       "mode": "ALL"
     },
-    "columnWidthsByName": {},
+    "columnWidthsByName": {
+      "col_0": 100,
+      "col_1": 100
+    },
     "columnUseScientificNotationByName": {},
     "coloring": {
       "scheme": "MEANING_AND_STATUS",
@@ -36,7 +39,7 @@
         "maxReadUncompressedBytes": -1
       },
       "autoRefreshSample": false,
-      "_refreshTrigger": 0
+      "_refreshTrigger": 1691674929975
     },
     "vizSampling": {
       "selection": {
@@ -60,7 +63,9 @@
       "autoRefreshSample": false,
       "_refreshTrigger": 0
     },
-    "exploreUIParams": {},
+    "exploreUIParams": {
+      "autoRefresh": true
+    },
     "globalSearchQuery": "",
     "explorationFilters": [],
     "previewMode": "ALL_ROWS"
@@ -193,6 +198,7 @@
           "defaultRadius": 5.0,
           "singleShape": "FILLED_CIRCLE"
         },
+        "computeMode": "NORMAL",
         "xAxisMode": "NORMAL",
         "yAxisMode": "NORMAL",
         "pieOptions": {
