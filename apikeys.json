@@ -1,0 +1,26 @@
+[
+  {
+    "execSQLLike": false,
+    "localDatasets": [],
+    "projectPrivileges": {
+      "admin": false,
+      "readProjectContent": false,
+      "writeProjectContent": false,
+      "exportDatasetsData": false,
+      "readDashboards": false,
+      "writeDashboards": false,
+      "moderateDashboards": false,
+      "shareToWorkspaces": false,
+      "runScenarios": false,
+      "manageDashboardAuthorizations": false,
+      "manageExposedElements": false,
+      "manageAdditionalDashboardUsers": false,
+      "executeApp": false
+    },
+    "onBehalf": "NKtphD1",
+    "id": "se3Gg9lR8RHcrWmE",
+    "key": "ddUI76qz3HbMv8n00AuVykrCGFf6ig81",
+    "label": "Key for Web app test(NKtphD1)",
+    "createdOn": 1691746296126
+  }
+]
