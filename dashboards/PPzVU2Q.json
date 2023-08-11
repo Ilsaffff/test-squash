@@ -8,7 +8,7 @@
             "tileType": "INSIGHT",
             "box": {
               "top": 0,
-              "left": 0,
+              "left": 1,
               "width": 3,
               "height": 3
             },
@@ -33,11 +33,11 @@
   "name": "ci/cd\u0027s default dashboard",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 2,
+    "versionNumber": 3,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1691746344150
+    "lastModifiedOn": 1691746352845
   },
   "creationTag": {
     "versionNumber": 0,
