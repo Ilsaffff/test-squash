@@ -7,7 +7,15 @@
     },
     "columnWidthsByName": {
       "col_0": 100,
-      "col_1": 100
+      "col_1": 100,
+      "col_2": 100,
+      "col_3": 100,
+      "col_4": 100,
+      "col_5": 100,
+      "col_6": 100,
+      "col_7": 100,
+      "col_8": 100,
+      "col_9": 100
     },
     "columnUseScientificNotationByName": {},
     "coloring": {
@@ -39,7 +47,7 @@
         "maxReadUncompressedBytes": -1
       },
       "autoRefreshSample": false,
-      "_refreshTrigger": 1691674929975
+      "_refreshTrigger": 1692280303298
     },
     "vizSampling": {
       "selection": {
