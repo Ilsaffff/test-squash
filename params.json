@@ -17,7 +17,8 @@
           "objectType": "DATASET"
         },
         "modes": [
-          "READ"
+          "READ",
+          "WRITE"
         ]
       }
     ]
@@ -210,11 +211,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 6,
+    "versionNumber": 7,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692282378063
+    "lastModifiedOn": 1692282745768
   },
   "creationTag": {
     "versionNumber": 0,
