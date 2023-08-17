@@ -42,8 +42,8 @@
             "box": {
               "top": 0,
               "left": 0,
-              "width": 2,
-              "height": 2
+              "width": 12,
+              "height": 6
             },
             "clickAction": "DO_NOTHING",
             "tileParams": {
@@ -63,6 +63,37 @@
         ]
       },
       "showTitle": false
+    },
+    {
+      "id": "TGsTFDh",
+      "grid": {
+        "tiles": [
+          {
+            "tileType": "INSIGHT",
+            "box": {
+              "top": 0,
+              "left": 0,
+              "width": 2,
+              "height": 2
+            },
+            "clickAction": "DO_NOTHING",
+            "tileParams": {
+              "showXAxis": true,
+              "showYAxis": true,
+              "showLegend": false,
+              "showTooltips": true,
+              "autoPlayAnimation": true
+            },
+            "autoLoad": true,
+            "showTitle": "YES",
+            "insightId": "Z7MG7ix",
+            "insightType": "chart",
+            "displayMode": "INSIGHT",
+            "resizeImageMode": "FIT_SIZE"
+          }
+        ]
+      },
+      "showTitle": false
     }
   ],
   "owner": "admin",
@@ -70,11 +101,11 @@
   "name": "auto",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 1,
+    "versionNumber": 2,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692282446800
+    "lastModifiedOn": 1692282620790
   },
   "creationTag": {
     "versionNumber": 0,
