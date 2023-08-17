@@ -1,12 +1,54 @@
 {
   "inputDatasetSmartName": "auto",
   "script": {
-    "steps": [],
+    "steps": [
+      {
+        "type": "ColumnsSelector",
+        "params": {
+          "keep": false,
+          "appliesTo": "SINGLE_COLUMN",
+          "columns": [
+            "normalized-losses"
+          ]
+        },
+        "metaType": "PROCESSOR",
+        "preview": false,
+        "disabled": false,
+        "alwaysShowComment": false
+      }
+    ],
     "maxProcessedMemTableBytes": -1,
     "columnsSelection": {
       "mode": "ALL"
     },
-    "columnWidthsByName": {},
+    "columnWidthsByName": {
+      "symboling": 100,
+      "normalized-losses": 143,
+      "make": 106,
+      "fuel-type": 100,
+      "col_4aspiration": 128,
+      "num-of-doors": 105,
+      "body-style": 100,
+      "drive-wheels": 105,
+      "engine-location": 128,
+      "wheel-base": 134,
+      "length": 134,
+      "width": 134,
+      "height": 134,
+      "curb-weight": 100,
+      "engine-type": 100,
+      "num-of-cylinders": 135,
+      "engine-size": 100,
+      "fuel-system": 100,
+      "bore": 134,
+      "stroke": 134,
+      "compression-ratio": 143,
+      "horsepower": 100,
+      "peak-rpm": 100,
+      "city-mpg": 100,
+      "highway-mpg": 100,
+      "price": 100
+    },
     "columnUseScientificNotationByName": {},
     "coloring": {
       "scheme": "MEANING_AND_STATUS",
@@ -61,7 +103,9 @@
       "autoRefreshSample": false,
       "_refreshTrigger": 0
     },
-    "exploreUIParams": {},
+    "exploreUIParams": {
+      "autoRefresh": true
+    },
     "globalSearchQuery": "",
     "explorationFilters": [],
     "previewMode": "ALL_ROWS"
@@ -69,11 +113,11 @@
   "charts": [],
   "name": "Quick modeling of price on auto",
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692281736465
+    "lastModifiedOn": 1692281931607
   },
   "creationTag": {
     "versionNumber": 0,
