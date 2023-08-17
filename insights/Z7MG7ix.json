@@ -26,9 +26,9 @@
       "_refreshTrigger": 0
     },
     "def": {
-      "type": "grouped_columns",
+      "type": "scatter",
       "variant": "normal",
-      "name": "Chart",
+      "name": "stroke vs price",
       "userEditedName": false,
       "displayWithEChartsByDefault": true,
       "genericDimension0": [],
@@ -38,8 +38,26 @@
       "genericMeasures": [],
       "xDimension": [],
       "yDimension": [],
-      "uaXDimension": [],
-      "uaYDimension": [],
+      "uaXDimension": [
+        {
+          "column": "stroke",
+          "type": "NUMERICAL",
+          "treatAsAlphanum": false,
+          "sortBy": "NATURAL",
+          "sortAscending": false,
+          "isA": "ua"
+        }
+      ],
+      "uaYDimension": [
+        {
+          "column": "price",
+          "type": "NUMERICAL",
+          "treatAsAlphanum": false,
+          "sortBy": "NATURAL",
+          "sortAscending": false,
+          "isA": "ua"
+        }
+      ],
       "uaSize": [],
       "uaShape": [],
       "uaColor": [],
@@ -79,6 +97,7 @@
       "tooltipMeasures": [],
       "boxplotBreakdownDim": [],
       "boxplotValue": [],
+      "filters": [],
       "axis1LogScale": false,
       "axis2LogScale": false,
       "includeZero": true,
@@ -149,6 +168,7 @@
         "defaultRadius": 5.0,
         "singleShape": "FILLED_CIRCLE"
       },
+      "computeMode": "NORMAL",
       "xAxisMode": "NORMAL",
       "yAxisMode": "NORMAL",
       "pieOptions": {
@@ -185,14 +205,14 @@
   },
   "owner": "admin",
   "listed": false,
-  "name": "Chart on auto",
+  "name": "stroke vs price on auto",
   "dashboardCreationId": "TZt8HNL",
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692282620636
+    "lastModifiedOn": 1692282663998
   },
   "creationTag": {
     "versionNumber": 0,
