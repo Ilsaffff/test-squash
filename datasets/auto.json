@@ -60,11 +60,11 @@
     "dimensions": []
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692281624373
+    "lastModifiedOn": 1692341295547
   },
   "creationTag": {
     "versionNumber": 0,
@@ -88,8 +88,8 @@
   },
   "schema": {
     "columns": [
-      {"name":"symboling","type":"string"},
-      {"name":"normalized-losses","type":"string"},
+      {"name":"symboling","type":"bigint"},
+      {"name":"normalized-losses","type":"bigint"},
       {"name":"make","type":"string"},
       {"name":"fuel-type","type":"string"},
       {"name":"col_4aspiration","type":"string"},
@@ -97,23 +97,25 @@
       {"name":"body-style","type":"string"},
       {"name":"drive-wheels","type":"string"},
       {"name":"engine-location","type":"string"},
-      {"name":"wheel-base","type":"string"},
-      {"name":"length","type":"string"},
-      {"name":"width","type":"string"},
-      {"name":"height","type":"string"},
-      {"name":"curb-weight","type":"string"},
+      {"name":"wheel-base","type":"double"},
+      {"name":"length","type":"double"},
+      {"name":"width","type":"double"},
+      {"name":"height","type":"double"},
+      {"name":"curb-weight","type":"bigint"},
       {"name":"engine-type","type":"string"},
       {"name":"num-of-cylinders","type":"string"},
-      {"name":"engine-size","type":"string"},
+      {"name":"engine-size","type":"bigint"},
       {"name":"fuel-system","type":"string"},
-      {"name":"bore","type":"string"},
-      {"name":"stroke","type":"string"},
-      {"name":"compression-ratio","type":"string"},
-      {"name":"horsepower","type":"string"},
-      {"name":"peak-rpm","type":"string"},
-      {"name":"city-mpg","type":"string"},
-      {"name":"highway-mpg","type":"string"},
-      {"name":"price","type":"string"}
+      {"name":"bore","type":"double"},
+      {"name":"stroke","type":"double"},
+      {"name":"compression-ratio","type":"double"},
+      {"name":"horsepower","type":"bigint"},
+      {"name":"peak-rpm","type":"bigint"},
+      {"name":"city-mpg","type":"bigint"},
+      {"name":"highway-mpg","type":"bigint"},
+      {"name":"price","type":"bigint"},
+      {"name":"cluster_labels","type":"string"},
+      {"name":"cluster_id","type":"bigint"}
     ],
     "userModified": true
   },
