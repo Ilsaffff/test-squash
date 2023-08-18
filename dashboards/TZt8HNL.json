@@ -137,8 +137,8 @@
             "box": {
               "top": 0,
               "left": 0,
-              "width": 2,
-              "height": 2
+              "width": 12,
+              "height": 6
             },
             "clickAction": "DO_NOTHING",
             "tileParams": {
@@ -165,11 +165,11 @@
   "name": "auto",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 5,
+    "versionNumber": 6,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1692354474216
+    "lastModifiedOn": 1692354548730
   },
   "creationTag": {
     "versionNumber": 0,
